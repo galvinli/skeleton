@@ -37,6 +37,8 @@ class InventoryItem(DbusProperties):
 			data['fault'] = 'False'
 		if (data.has_key('version') == False):
 			data['version'] = ''
+                if (data.has_key('present') == False):
+                        data['Manufacturer'] = ''
 
 		self.SetMultiple(INTF_NAME,data)
 
@@ -61,6 +63,11 @@ class InventoryItem(DbusProperties):
 		self.Set(INTF_NAME,'fault',fault)
 		PropertyCacher.save(self.name, INTF_NAME, self.properties)
 
+        @dbus.service.method(INTF_NAME,
+                in_signature='s', out_signature='')
+        def setManufacturer(self,Manufacturer):
+                self.Set(INTF_NAME,'Manufacturer',Manufacturer)
+                PropertyCacher.save(self.name, INTF_NAME, self.properties)
 
 def getVersion():
 	version = "Error"
