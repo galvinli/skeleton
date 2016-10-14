@@ -32,13 +32,13 @@ class InventoryItem(DbusProperties):
 		self.name = name
 		
 		if (data.has_key('present') == False):
-			data['present'] = 'False'
+			data['present'] = 'Ken'
 		if (data.has_key('fault') == False):
-			data['fault'] = 'False'
+			data['fault'] = 'Ken'
 		if (data.has_key('version') == False):
 			data['version'] = ''
                 if (data.has_key('present') == False):
-                        data['Manufacturer'] = ''
+                        data['Manufacturer'] = 'Ken'
 
 		self.SetMultiple(INTF_NAME,data)
 
